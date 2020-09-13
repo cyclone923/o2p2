@@ -5,29 +5,30 @@ import math
 import random
 import tqdm
 
+# import mujoco_py
 import matplotlib.pyplot as plt
 
-from logger import Logger
-import contacts
+from mujoco.logger import Logger
+import mujoco.contacts as contacts
 import utils
 
 parser = argparse.ArgumentParser()
 ## stuff you might want to edit
 parser.add_argument('--start', default=0, type=int, 
         help='starting index (useful if rendering in parallel jobs)')
-parser.add_argument('--num_images', default=5, type=int,
+parser.add_argument('--num_images', default=10, type=int,
         help='total number of images to render')
-parser.add_argument('--img_dim', default=256, type=int,
+parser.add_argument('--img_dim', default=64, type=int,
         help='image dimension')
-parser.add_argument('--output_path', default='rendered/test/', type=str,
+parser.add_argument('--output_path', default='rendered/initial_final/', type=str,
         help='path to save images')
 
-parser.add_argument('--drop_steps_max', default=500, type=int,
+parser.add_argument('--drop_steps_max', default=1001, type=int,
         help='max number of steps simulating dropped object')
-parser.add_argument('--render_freq', default=25, type=int,
+parser.add_argument('--render_freq', default=1000, type=int,
         help='frequency of image saves in drop simulation')
 
-parser.add_argument('--min_objects', default=4, type=int,
+parser.add_argument('--min_objects', default=2, type=int,
         help='min number of objects *starting on the ground*')
 parser.add_argument('--max_objects', default=4, type=int,
         help='max number of objects *starting on the ground*')
