@@ -4,12 +4,9 @@ import pickle
 import math
 import random
 import tqdm
-import pdb
 
-import mujoco_py as mjc
 import matplotlib.pyplot as plt
 
-from XML import XML
 from logger import Logger
 import contacts
 import utils
